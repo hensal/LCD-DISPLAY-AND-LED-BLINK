@@ -1,5 +1,5 @@
 //******************************************
-//**           ñt?â?\?|?i?\?|?˜?a ?@?@?@  **
+//**           â€°t?â‰«?\?|?i?\?|?Â§?a ?@?@?@  **
 //******************************************
 //**includes **
 //**
@@ -14,12 +14,10 @@
 
 
 /**********************************************************************
-*** define?@(?÷??fe?`?j
+*** define?@(?Â¶??â€™e?`?j
 **********************************************************************/
 extern unsigned char TITL0[16] = "DISPLAYtest 2021";
-extern unsigned char TITL1[16] = "welcome home";
-
-unsigned int del_cnt;
+extern unsigned char TITL1[16] = "Welcome home";
 
 //*****************************************
 void dispset_titl(void)
@@ -27,13 +25,13 @@ void dispset_titl(void)
 	unsigned char n;
 	unsigned char dsp_buf;
 
-	lcd_l1(0x00);				//1?s?U?aga?A?h???X?Z?b?g
+	lcd_l1(0x00);				//1?s?U?aâ€œa?A?h???X?Z?b?g
 	for (n=0 ;n<16 ;n++) {
 		dsp_buf = TITL0[n];		//line 1
 		lcd_dout(dsp_buf);		//1data write
 	}
-//
-	lcd_l2(0x00);				//2?s?U?aga?A?h???X?Z?b?g
+	
+	lcd_l2(0x40);				//2?s?U?aâ€œa?A?h???X?Z?b?g
 	for (n=0 ;n<16 ;n++) {
 		dsp_buf = TITL1[n];		//line 2
 		lcd_dout(dsp_buf);		//1data write
@@ -69,7 +67,7 @@ void dispset_count(void)
 }
 
 //****************************************
-//**?@LCD?ñ?uñâ
+//**?@LCD?â€°?uâ€°â‰«
 //
 void lcd_init(void)
 {
@@ -93,49 +91,52 @@ void lcd_init(void)
 	P0 = 0x00;		//E=0,R/W=0
 	delay_msec(5);
 //
-	P2 = 0x02;		//4bitAT‹AfE?Yfe
+	P2 = 0x02;		//4bitATÂ°Aâ€™ãƒ»?Yâ€™e
 	P0 = 0x02;		//E=1,R/W=0
 	delay_micro(100);
 	P0 = 0x00;		//E=0,R/W=0
 	delay_msec(5);
-//** ?}?}?c?c4ETPAAT‹AfE
-	lcd_cout(0x08);		//?\?|ƒÊI	
+//** ?Â±?Â±?c?c4ETï¿£AATÂ°Aâ€™ãƒ»
+	lcd_cout(0x28);		//?\?|Î¼I	
 	delay_msec(5);
-	lcd_cout(0x01);		//?\?|COO‹	
+	lcd_cout(0x0F);		//?\?|ï¼ŒOOÂ°	
 	delay_msec(5);
-	lcd_cout(0x06);		//LYAO‹O‹AT?PA	
+	lcd_cout(0x06);		//Â´YAOÂ°OÂ°AT?ï¿£A	
 	delay_msec(5);
-	lcd_cout(0x0E);		//?\?|on?A÷‹?Uon	
+	lcd_cout(0x01);		//?\?|on?AÂ¶Â°?Uon	
 	delay_msec(5);
+	lcd_cout(0x02);		//?\?|on?AÂ¶Â°?Uon	
+	delay_msec(5);
+	
 }
 
 //*****************************************
-//** 1?s?U}ATU??PA
+//** 1?s?UÂ±ATU??ï¿£A
 //** column(?n)
 //
 void lcd_l1(unsigned char column)
 {
 	unsigned char pos;
 	
-	pos = column & 0x0F;	//?n?I?Aeafl??16
-	pos = pos | 0x80;	//1?s?UETPAfCñA
+	pos = column & 0x0F;	//?n?I?Aâ€˜aâ€™l??16
+	pos = pos | 0x80;	//1?s?UETï¿£Aâ€™Câ€°A
 	lcd_cout(pos);
 	delay_msec(5);
 }
 //*****************************************
-//** 2?s?U}ATU??PA
+//** 2?s?UÂ±ATU??ï¿£A
 //
 void lcd_l2(unsigned char column)
 {
 	unsigned char pos;
-
-	pos = column & 0x0F;	//?n?I?Aeafl??16
-	pos = pos | 0xC0;	//2?s?UETPAfCñA
+         
+	pos = column & 0x4F;	//?n?I?Aâ€˜aâ€™l??16
+	pos = pos | 0xC0;	//2?s?UETï¿£Aâ€™Câ€°A
 	lcd_cout(pos);
 	delay_msec(5);
 }
 //*****************************************
-//** EÊ~CALCD?@oYAU‹Uo‹AT?o?I
+//** ãƒ»ï¿¢Ã—ï¼ŒALCD?@oYAUÂ°UoÂ°AT?o?I
 //
 void lcd_cout(unsigned char code)
 {
@@ -160,7 +161,7 @@ void lcd_cout(unsigned char code)
 //
 }
 //****************************************
-//** EÊ~CALCD?@AT‹Ao‹AT?o?I
+//** ãƒ»ï¿¢Ã—ï¼ŒALCD?@ATÂ°AoÂ°AT?o?I
 //
 void lcd_dout(unsigned char code)
 {
@@ -185,7 +186,7 @@ void lcd_dout(unsigned char code)
 //
 }
 //*****************************************
-//** I2CU?bfxñ?
+//** I2ï¼ŒU?bâ€™xâ€°?
 void delay_micro(unsigned int icnt)
 {
 	unsigned int del_cnt;
@@ -199,7 +200,7 @@ void delay_micro(unsigned int icnt)
 	}
 }
 //******************************************
-//** DO?bfxñ?
+//** DO?bâ€™xâ€°?
 void delay_msec(unsigned int icnt)
 {
 	unsigned int del_cnt;
