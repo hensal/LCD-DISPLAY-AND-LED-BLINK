@@ -23,7 +23,7 @@
 *******************************************************************************/
 
 /*******************************************************************************
-* File Name    : system.h
+* File Name    : port.h
 * Version      : Applilet EZ PL for RL78
 * Device(s)    : R5F1056A,R5F1057A,R5F1058A
 * Tool-Chain   : CC-RL
@@ -31,8 +31,8 @@
 * Creation Date: 2016/09/14
 *******************************************************************************/
 
-#ifndef _SYSTEM_H_
-#define _SYSTEM_H_
+#ifndef	_PORT_H_
+#define	_PORT_H_
 /*******************************************************************************
 Includes <System Includes> , "Project Includes"
 *******************************************************************************/
@@ -40,19 +40,6 @@ Includes <System Includes> , "Project Includes"
 /*******************************************************************************
 Macro definitions
 *******************************************************************************/
-#define CMC_MODE_X1						0b01000000
-#define CMC_MODE_EXTCLOCK				0b11000000
-#define	CMC_SYS_CLOCK_UNDER_10MHZ		0b00000000
-#define	CMC_SYS_CLOCK_OVER_10MHZ		0b00000001
-
-#define	CSC_INIT_VAL					0b01000000
-#define CSC_HOCO_VAL					0b01000000
-#define CSC_MOCO_VAL					0b01000011
-#define CSC_INVALID_VAL					0b01000001
-
-#define	CKC_INIT_VAL					0b00010000
-#define CKC_HOCO_VAL					0b00000000
-#define CKC_MOCO_VAL					0b00000011
 
 /*******************************************************************************
 Typedef definitions
@@ -65,8 +52,6 @@ Imported global variables and functions (from other files)
 /*******************************************************************************
 Exported global variables and functions (to be accessed by other files)
 *******************************************************************************/
-/*	Function Prototype	*/
-void	Clock_Init( void );
-void	hdwinit( void );
+void	PORT_Init( void );
 
-#endif /* _SYSTEM_H_ */
+#endif	/* _PORT_H_ */
